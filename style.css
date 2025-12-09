@@ -474,3 +474,43 @@ body.light-mode {
         grid-template-columns: 1fr;
     }
 }
+
+/* Particles background styles */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.5s ease;
+    /* Subtle dark gradient for dark theme to keep contrast high */
+    background: linear-gradient(to top right,
+      rgba(1, 12, 25, 0.6),
+      rgba(1, 25, 45, 0.5),
+      rgba(1, 40, 70, 0.45)
+    );
+}
+
+/* Light-mode gradient: keep it soft and low-opacity so dark text remains readable */
+body.light-mode #particles-js {
+    background: linear-gradient(to top right,
+      rgba(255, 255, 255, 0.18),
+      rgba(240, 249, 255, 0.12),
+      rgba(225, 245, 255, 0.08)
+    );
+}
+
+/* Reduce visual noise on small screens */
+@media (max-width: 600px) {
+    #particles-js {
+        display: none;
+    }
+}
+
+/* Ensure main content sits above the particle canvas */
+section, .hero, .nav-container, footer, .hero-content {
+    position: relative;
+    z-index: 1;
+}
