@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephen Otieno - Software Engineer</title>
+    <meta name="description" content="Software Engineer with 3 years of experience specializing in full-stack development, mobile applications, and DevOps. ALX Software Engineering Graduate.">
+    <meta property="og:title" content="Stephen Otieno - Software Engineer Portfolio">
+    <meta property="og:description" content="Passionate software engineer building innovative solutions with Python, JavaScript, Flutter, and more.">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">SO.</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>STEPHEN OTIENO</h1>
+            <p class="title">Software Engineer | 3 Years Experience</p>
+            <p class="bio">
+                Passionate software professional solving complex problems with innovative solutions. 
+                Experienced in full-stack development, mobile applications, and DevOps. 
+                ALX Software Engineering graduate committed to continuous learning and delivering results-driven approaches.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/StevOti" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/blackbutn02" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:steveotieno5640@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">Kotlin</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Dart</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-layer-group"></i> Frameworks & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Vue.js</span>
+                    <span class="skill-tag">Nuxt.js</span>
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">Bootstrap</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-database"></i> Databases & Cloud</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">MySQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> DevOps & Other</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Bash</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Nginx</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Project 1: Brique Energy -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Brique Energy Limited</h3>
+                    <p class="project-description">
+                        E-commerce platform for briquette sales featuring user authentication, order tracking, 
+                        and secure transactions. Built with Django and PostgreSQL Cloud Database.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://brique-energy.vercel.app" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/StevOti/Brique-Energy" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: KarlTransport -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">KarlTransport App</h3>
+                    <p class="project-description">
+                        Cross-platform vehicle transfer application with responsive design. 
+                        Integrated Firebase for real-time data management and secure transactions.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/StevOti/KarlTransport_App_Official" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: GroceryHub -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">GroceryHub App</h3>
+                    <p class="project-description">
+                        Innovative grocery-selling mobile app with user-friendly interfaces, 
+                        real-time inventory management, and secure payment transactions.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/StevOti/GroceryHub_App" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: AirBnB Clone -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AirBnB Clone</h3>
+                    <p class="project-description">
+                        Full-stack web application clone developed during ALX Software Engineering program. 
+                        Features RESTful API, user authentication, and database management.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/StevOti/AirBnB_clone_v4" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: ALX System Engineering -->
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">System Engineering & DevOps</h3>
+                    <p class="project-description">
+                        Collection of projects showcasing infrastructure automation, scripting, 
+                        load balancing, and CI/CD pipeline implementations from ALX program.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Bash</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Nginx</span>
+                        <span class="tech-tag">Linux</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/StevOti/alx-system_engineering-devops" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Build Something Together</h2>
+        <div class="contact-content">
+            <p>
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. 
+                Feel free to reach out through any of the channels below!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:steveotieno5640@gmail.com">steveotieno5640@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+254-740-427-966</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Nairobi, Kenya</span>
+                </div>
+            </div>
+            <div class="cta-buttons" style="margin-top: 2rem;">
+                <a href="https://github.com/StevOti" target="_blank" class="btn">
+                    <i class="fab fa-github"></i> View GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Stephen Otieno Onyango. Built with passion and deployed on GitHub Pages.</p>
+        <p>Made with HTML, CSS, and JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
