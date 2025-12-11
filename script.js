@@ -27,6 +27,7 @@
 		// Elements to apply reveal to: top-level sections and important inner elements
 		const selectors = [
 			'main > section',
+			'.expertise',
 			'.hero-title',
 			'.hero-sub',
 			'.hero-intro',
@@ -46,7 +47,7 @@
 		targets.forEach(el => el.classList.add('reveal'));
 
 		// Containers for which we want to stagger immediate children
-		const staggerSelectors = ['.work-inner', '.portfolio-grid', '.project-card', '.testimonial-track'];
+		const staggerSelectors = ['.work-inner', '.portfolio-grid', '.project-card', '.testimonial-track', '.expertise', '.expertise-group'];
 
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
@@ -246,6 +247,144 @@
 		document.addEventListener('DOMContentLoaded', initNavToggle);
 	} else {
 		initNavToggle();
+	}
+})();
+
+
+// Portfolio carousel on small screens (uses scroll-snap + JS controls)
+(function(){
+	function initPortfolioCarousel(){
+		const grid = document.querySelector('.portfolio-grid');
+		if(!grid) return;
+		const container = grid.closest('.carousel-container');
+		if(!container) return;
+
+		const prev = container.querySelector('.carousel-prev');
+		const next = container.querySelector('.carousel-next');
+		const dots = container.querySelector('.carousel-dots');
+		const cards = Array.from(grid.querySelectorAll('.project-card'));
+		if(!cards.length) return;
+
+		let idx = 0;
+		let resizeObserver;
+		let attached = false;
+		let scrollTimeout = null;
+		let prevElem = null;
+		let nextElem = null;
+
+		function buildDots(){
+			if(!dots) return;
+			dots.innerHTML = '';
+			cards.forEach((c,i)=>{
+				const b = document.createElement('button');
+				b.type = 'button';
+				if(i===0) b.classList.add('active');
+				b.addEventListener('click', ()=>{ scrollToIndex(i); });
+				dots.appendChild(b);
+			});
+		}
+
+		function scrollToIndex(i){
+			idx = Math.max(0, Math.min(i, cards.length-1));
+			// re-query the card in case DOM changed
+			const card = cards[idx];
+			if(card && card.scrollIntoView){
+				card.scrollIntoView({behavior:'smooth', inline:'center'});
+			}
+			updateDots();
+		}
+
+		function updateDots(){
+			if(!dots) return;
+			const btns = Array.from(dots.children);
+			btns.forEach((b,i)=> b.classList.toggle('active', i===idx));
+		}
+
+		function recomputeIndex(){
+			const gridRect = grid.getBoundingClientRect();
+			const centerX = gridRect.left + gridRect.width/2;
+			let closest = 0; let closestDist = Infinity;
+			cards.forEach((c,i)=>{
+				const r = c.getBoundingClientRect();
+				const cCenter = r.left + r.width/2;
+				const dist = Math.abs(cCenter - centerX);
+				if(dist < closestDist){ closest = i; closestDist = dist; }
+			});
+			if(closest !== idx){ idx = closest; updateDots(); }
+		}
+
+		function onScroll(){
+			if(scrollTimeout) clearTimeout(scrollTimeout);
+			scrollTimeout = setTimeout(()=>{
+				recomputeIndex();
+			}, 80);
+		}
+
+		function attach(){
+			if(attached) return;
+			attached = true;
+
+			// re-query controls in case they were replaced
+			prevElem = container.querySelector('.carousel-prev');
+			nextElem = container.querySelector('.carousel-next');
+
+			buildDots();
+			grid.addEventListener('scroll', onScroll, {passive:true});
+
+			if(prevElem){
+				prevElem.addEventListener('click', prevHandler);
+			}
+			if(nextElem){
+				nextElem.addEventListener('click', nextHandler);
+			}
+
+			// observe resize to keep track
+			resizeObserver = new ResizeObserver(()=> recomputeIndex());
+			resizeObserver.observe(grid);
+			recomputeIndex();
+		}
+
+		function detach(){
+			if(!attached) return;
+			attached = false;
+
+			grid.removeEventListener('scroll', onScroll);
+
+			if(prevElem){ prevElem.removeEventListener('click', prevHandler); }
+			if(nextElem){ nextElem.removeEventListener('click', nextHandler); }
+
+			// keep DOM intact but clear dots
+			if(dots) dots.innerHTML = '';
+
+			if(resizeObserver) resizeObserver.disconnect();
+			resizeObserver = null;
+			prevElem = nextElem = null;
+		}
+
+		// Handlers declared so we can remove them later
+		function prevHandler(){ scrollToIndex(idx-1); }
+		function nextHandler(){ scrollToIndex(idx+1); }
+
+		// initialize only on small screens; re-evaluate on resize
+		function check(){
+			if(window.innerWidth <= 800){
+				container.classList.add('is-active');
+				attach();
+			} else {
+				container.classList.remove('is-active');
+				detach();
+			}
+		}
+
+		check();
+		let rtid = null;
+		window.addEventListener('resize', ()=>{ if(rtid) clearTimeout(rtid); rtid = setTimeout(check,120); });
+	}
+
+	if(document.readyState === 'loading'){
+		document.addEventListener('DOMContentLoaded', initPortfolioCarousel);
+	} else {
+		initPortfolioCarousel();
 	}
 })();
 
