@@ -284,12 +284,17 @@
 			});
 		}
 
-		function scrollToIndex(i){
+		function scrollToIndex(i, behavior = 'smooth'){
 			idx = Math.max(0, Math.min(i, cards.length-1));
 			// re-query the card in case DOM changed
 			const card = cards[idx];
 			if(card && card.scrollIntoView){
-				card.scrollIntoView({behavior:'smooth', inline:'center'});
+				try{
+					card.scrollIntoView({behavior: behavior, inline:'center'});
+				} catch(e){
+					// fallback for older browsers
+					card.scrollIntoView();
+				}
 			}
 			updateDots();
 		}
@@ -329,6 +334,11 @@
 			nextElem = container.querySelector('.carousel-next');
 
 			buildDots();
+
+			// Ensure carousel starts on the first card (index 0)
+			idx = 0;
+			scrollToIndex(0, 'auto');
+
 			grid.addEventListener('scroll', onScroll, {passive:true});
 
 			if(prevElem){
@@ -341,7 +351,6 @@
 			// observe resize to keep track
 			resizeObserver = new ResizeObserver(()=> recomputeIndex());
 			resizeObserver.observe(grid);
-			recomputeIndex();
 		}
 
 		function detach(){
