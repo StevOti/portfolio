@@ -288,13 +288,24 @@
 			idx = Math.max(0, Math.min(i, cards.length-1));
 			// re-query the card in case DOM changed
 			const card = cards[idx];
-			if(card && card.scrollIntoView){
-				try{
-					card.scrollIntoView({behavior: behavior, inline:'center'});
-				} catch(e){
-					// fallback for older browsers
-					card.scrollIntoView();
-				}
+			if(card){
+				// compute precise scrollLeft to center the card within the grid
+				const gridWidth = grid.clientWidth;
+				const cardWidth = card.clientWidth;
+				// offsetLeft is relative to the grid's padding box
+				const targetLeft = Math.max(0, card.offsetLeft - (gridWidth - cardWidth) / 2);
+				// use requestAnimationFrame to allow layout/animations to settle
+				requestAnimationFrame(() => {
+					try{
+						grid.scrollTo({ left: targetLeft, behavior });
+					} catch(e){
+						grid.scrollLeft = targetLeft;
+					}
+				});
+				// In case the page triggers layout changes (animations), re-center shortly after
+				setTimeout(() => {
+					try{ grid.scrollTo({ left: targetLeft, behavior: 'auto' }); } catch(e){ grid.scrollLeft = targetLeft; }
+				}, 120);
 			}
 			updateDots();
 		}
