@@ -305,7 +305,7 @@
 				// In case the page triggers layout changes (animations), re-center shortly after
 				setTimeout(() => {
 					try{ grid.scrollTo({ left: targetLeft, behavior: 'auto' }); } catch(e){ grid.scrollLeft = targetLeft; }
-				}, 120);
+				}, 350);
 			}
 			updateDots();
 		}
@@ -397,6 +397,12 @@
 		}
 
 		check();
+
+		// Ensure we re-center after all resources load (images/fonts/animations)
+		window.addEventListener('load', function(){
+			// small defer to let layout settle
+			setTimeout(()=>{ scrollToIndex(0,'auto'); }, 120);
+		});
 		let rtid = null;
 		window.addEventListener('resize', ()=>{ if(rtid) clearTimeout(rtid); rtid = setTimeout(check,120); });
 	}
