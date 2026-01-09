@@ -9,6 +9,12 @@ This repository contains a static portfolio website for Stephen Otieno. The site
 - **Project cards:** Clickable project cards that link to GitHub repositories.
 - **Visuals & UX:** Hero sections, roll-underlines on nav links, sticky header, reveal animations, and a testimonial carousel.
 
+## Recent updates
+
+- Replaced the portfolio section with seven highlighted projects: KarlTransport App, KarlTransport Webapp, Forbes Elite, Airbnb Clone, KitchenKonnect, Afrocreed, and Brique energy.
+- Updated the Services page to show: Web and App Development, Devops and Cloud, and Machine Learning and AI (links updated).
+- Rewrote testimonial slides with four real contacts and more natural comments.
+
 ## Technologies
 
 - HTML5
@@ -40,6 +46,22 @@ If `python` is not on your PATH, try `py -m http.server 8000`.
 
 - Main files to edit: `index.html`, `services.html`, `about.html`, `contact.html`, `style.css`, `script.js`.
 - Images are located in the `images/` folder.
+
+## Projects showcased
+
+- KarlTransport App — Mobile application for bookings and driver management.
+- KarlTransport Webapp — Admin dashboard and booking management web app.
+- Forbes Elite — Content and listing platform with membership features.
+- Airbnb Clone — Property listing and booking demo.
+- KitchenKonnect — Food ordering and kitchen management platform.
+- Afrocreed — Community and cultural content platform.
+- Brique energy — Sustainable energy monitoring and tools.
+
+## Services
+
+- Web and App Development — End-to-end web and mobile application development.
+- Devops and Cloud — CI/CD, infrastructure automation and cloud deployments.
+- Machine Learning and AI — Model development, data pipelines and AI integration. See badges: https://www.credly.com/users/steve-otieno.22b3ac50/badges#credly
 
 ## Deployment
 
