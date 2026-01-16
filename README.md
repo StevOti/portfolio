@@ -69,5 +69,5 @@ This is a static site and can be deployed to GitHub Pages, Netlify, Vercel, or a
 
 ## Contact
 
-See the `contact.html` page for contact details and social links.
+Take a look at the `contact.html` page for contact details and social links.
 
