@@ -51,7 +51,7 @@ If `python` is not on your PATH, try `py -m http.server 8000`.
 
 - KarlTransport App — Mobile application for bookings and driver management.
 - KarlTransport Webapp — Admin dashboard and booking management web app.
-- Forbes Elite — Content and listing platform with membership features.
+- Forbes Elite Webapp — Content and listing platform with membership features.
 - Airbnb Clone — Property listing and booking demo.
 - KitchenKonnect — Food ordering and kitchen management platform.
 - Afrocreed — Community and cultural content platform.
